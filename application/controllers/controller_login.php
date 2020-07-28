@@ -16,15 +16,17 @@ class Controller_Login extends Controller
 			$password =$_POST['password'];
 			if($login == "admin" && $password == "123")
 			{
-				$data = $this->model->get_all_tasks();
-				$this->view->generate('main_view.php', 'main_view.php', $data);
+				//$task_data = $this->model->get_all_tasks();
+				$data["login_status"] = "access_granted";
 			}
 			else{
 				$data["login_status"] = "access_denied";
-				$this->view->generate('login_view.php', 'login_view.php', $data);
 			}
 		}
-		else
-			$this->view->generate('login_view.php', 'login_view.php');
+		else{
+			$data["login_status"] = "";
+		}
+			
+		$this->view->generate('login_view.php', 'login_view.php', $data);
 	}
 }

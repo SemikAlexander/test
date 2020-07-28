@@ -131,13 +131,28 @@
   </form>
 </div>
 <?php error_reporting(0); extract($data); ?>
-<?php if($login_status=="access_denied") { ?>
+<?php if($login_status=="access_granted") { ?>
+  <META HTTP-EQUIV="Refresh" CONTENT="3; URL=http://test.ru/main2">
+  <div class="alert success">
+    <span class="closebtn">×</span>  
+    <strong>
+      Выполнено!
+    </strong> 
+    Авторизация прошла успешно!
+  </div>
+<?php 
+} 
+elseif($login_status=="access_denied") { ?>
   <div class="alert">
     <span class="closebtn">×</span>  
-    <strong>Ошибка!</strong> Логин и/или пароль введены неверно!
+    <strong>
+      Ошибка!
+    </strong> 
+    Логин и/или пароль введены неверно!
   </div>
   <?php 
-  }?>
+} ?>
+
 <script>
   var close = document.getElementsByClassName("closebtn");
   var i;

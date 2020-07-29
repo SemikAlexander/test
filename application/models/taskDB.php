@@ -10,6 +10,13 @@ class TasksDB extends Model{
 			return false;
 	}
 
+    public function user_exist($login, $password){
+        if($login == "admin" && $password == "123")
+            return "access_granted";
+        else
+            return "access_denied";
+    }
+
     public function get_all_tasks(){
         $db = new SQLite3('tasks.db');
         $result = $db->query('SELECT task.id_task, task.name_user, task.email_user, task.task_text, task.status_task FROM task');

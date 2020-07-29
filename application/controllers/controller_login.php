@@ -14,14 +14,15 @@ class Controller_Login extends Controller
 		{
 			$login = $_POST['login'];
 			$password =$_POST['password'];
-			if($login == "admin" && $password == "123")
+			$res = $this->model->user_exist($login, $password);
+			$data["login_status"] = $res;
+			/*if($login == "admin" && $password == "123")
 			{
-				//$task_data = $this->model->get_all_tasks();
 				$data["login_status"] = "access_granted";
 			}
 			else{
 				$data["login_status"] = "access_denied";
-			}
+			}*/
 		}
 		else{
 			$data["login_status"] = "";

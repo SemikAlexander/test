@@ -14,14 +14,12 @@ class Controller_Main2 extends Controller
 		$this->view->generate('main2_view.php', 'main2_view.php', $data);
 	}
 
-	public function status_changed(){
-		if(isset($_POST['status_task'])){
-            $status = $_POST['status_task'];
-            for($i = 0; $i < $status; $i++){
-                $res = $this->model->task_status($status[$i], 'T');
-                $data = $this->model->get_all_tasks();
-                $this->view->generate('main2_view.php', 'main2_view.php', $data);
-            }
-        }
+	function status_changed(){
+		$status = $_POST['status_task'];
+		for($i = 0; $i < $status; $i++){
+			$res = $this->model->task_status($status[$i], 'T');
+			$data = $this->model->get_all_tasks();
+			$this->view->generate('main2_view.php', 'main2_view.php', $data);
+		}
 	}
 }
